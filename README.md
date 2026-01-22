@@ -43,34 +43,7 @@ No classifiers, no neural networks, and no optimization procedures are used.
 
 ## Project Structure
 
-face-recognition-linear-algebra/
-├── notebooks/
-│   ├── 01_faces_as_vectors.ipynb
-│   ├── 02_mean_face_and_centering.ipynb
-│   ├── 03_eigenfaces_pca_from_scratch.ipynb
-│   ├── 04_projection_and_identity_distance.ipynb
-│   └── 05_failure_cases_and_limitations.ipynb
-│
-├── src/
-│   ├── data_utils.py
-│   ├── pca.py
-│   ├── eigenfaces.py
-│   ├── recognition.py
-│   └── demo.py
-│
-├── data/
-│   ├── train_faces/
-│   │   ├── s1/
-│   │   ├── s2/
-│   │   └── ...
-│   │
-│   └── test_faces/
-│       └── sX/
-│           └── image.pgm
-│
-├── requirements.txt
-└── README.md
-
+<img width="319" height="448" alt="Figure_4" src="https://github.com/user-attachments/assets/0098f4db-85d5-4b21-a6f3-a559a9b158e3" />
 
 - `notebooks/` contain a step-by-step mathematical explanation.
 - `src/` contains a clean implementation of the eigenfaces pipeline.
