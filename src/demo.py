@@ -43,33 +43,60 @@ IMAGE_SHAPE = (IMAGE_HEIGHT, IMAGE_WIDTH)     # для NumPy
 NUM_COMPONENTS = 10
 THRESHOLD = 3000.0
 
-TRAIN_DIR = DATA_DIR / "train_faces" / "s1"
-TEST_IMAGE = DATA_DIR / "train_faces" / "s1" / "1.pgm"
+TRAIN_DIR = DATA_DIR / "train_faces" / "s15"
+TEST_IMAGE = DATA_DIR / "train_faces" / "s16" / "10.pgm"
 
 # -------------------------------------------------
 # VISUALIZATION
 # -------------------------------------------------
 
-def show_reconstruction(original, reconstructed, image_shape):
-    original_img = original.reshape(image_shape, order="C")
-    reconstructed_img = reconstructed.reshape(image_shape, order="C")
+def show_reconstruction(original, reconstructed, image_shape, decision, distance):
+    original_img = original.reshape(image_shape)
+    reconstructed_img = reconstructed.reshape(image_shape)
     diff_img = original_img - reconstructed_img
 
-    plt.figure(figsize=(9, 3))
+    if decision:
+        decision_text = "ACCEPTED"
+        explanation = (
+            "face fits eigenface space\n"
+            "reconstruction error is small\n"
+            "identity accepted"
+        )
+    else:
+        decision_text = "REJECTED"
+        explanation = (
+            "face does not fit eigenface space\n"
+            "reconstruction error is large\n"
+            "identity rejected"
+        )
 
-    plt.subplot(1, 3, 1)
+    plt.figure(figsize=(10, 4))
+
+    plt.subplot(1, 4, 1)
     plt.imshow(original_img, cmap="gray")
     plt.title("Original")
     plt.axis("off")
 
-    plt.subplot(1, 3, 2)
+    plt.subplot(1, 4, 2)
     plt.imshow(reconstructed_img, cmap="gray")
     plt.title("Reconstruction")
     plt.axis("off")
 
-    plt.subplot(1, 3, 3)
+    plt.subplot(1, 4, 3)
     plt.imshow(diff_img, cmap="gray")
     plt.title("Difference")
+    plt.axis("off")
+
+    plt.subplot(1, 4, 4)
+    plt.text(
+        0.05,
+        0.8,
+        f"Decision: {decision_text}\n\n"
+        f"Distance: {distance:.2f}\n\n"
+        f"{explanation}",
+        fontsize=11,
+        verticalalignment="top"
+    )
     plt.axis("off")
 
     plt.tight_layout()
@@ -143,5 +170,8 @@ x_hat = reconstruct_face(y, U_k)
 show_reconstruction(
     original=x,
     reconstructed=x_hat + mean_face,
-    image_shape=IMAGE_SHAPE
+    image_shape=IMAGE_SHAPE,
+    decision=accepted,
+    distance=distance
 )
+
