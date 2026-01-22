@@ -1,0 +1,29 @@
+Dataset: AT&T Face Database (ORL)
+
+Source:
+https://www.kaggle.com/datasets/kasikrit/att-database-of-faces
+
+Instructions:
+1. Download the dataset from Kaggle using the link above.
+2. Extract the archive locally.
+3. Place the extracted folders into the data directory.
+4. Rename the main folder to: train_faces
+5. (Optional) Copy one image into a separate test_faces directory for demo usage.
+
+Expected path:
+data/train_faces/s1/1.pgm
+data/train_faces/s2/1.pgm
+...
+
+Optional test image path:
+data/test_faces/s1/1.pgm
+
+Notes:
+- Images are grayscale (.pgm) with resolution 92x112.
+- Face images are NOT included in the repository.
+- The dataset is used for classical eigenfaces experiments.
+
+Python Dependencies Required to Run the Project:
+- numpy
+- matplotlib
+- pillow
