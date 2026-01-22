@@ -62,11 +62,14 @@ face-recognition-linear-algebra/
 │   ├── train_faces/
 │   │   ├── s1/
 │   │   ├── s2/
-│   └── └── ...   
+│   │   └── ...
+│   │
+│   └── test_faces/
+│       └── sX/
+│           └── image.pgm
 │
 ├── requirements.txt
 └── README.md
-
 
 
 - `notebooks/` contain a step-by-step mathematical explanation.
